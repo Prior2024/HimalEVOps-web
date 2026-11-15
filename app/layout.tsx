@@ -9,9 +9,38 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 
 export const metadata: Metadata = {
-  title: "HimalEVOps | EV Charging Monitoring Nepal",
-  description: "24/7 remote monitoring and troubleshooting for EV chargers in Nepal.",
+  metadataBase: new URL('https://himalevops.vercel.app'),
+  title: {
+    default: "HimalEVOps | EV Charging Monitoring & Fault Response Nepal",
+    template: "%s | HimalEVOps"
+  },
+  description: "Nepal's premier 24/7 remote monitoring, fault detection, and troubleshooting service for EV charging stations. Keep your network online with OCPP 1.6J experts.",
+  keywords: ["EV charging Nepal", "EV charger monitoring", "OCPP Nepal", "EV operations Kathmandu", "remote EV troubleshooting", "HimalEVOps"],
+  authors: [{ name: "HimalEVOps" }],
+  openGraph: {
+    title: "HimalEVOps | Keep Your EV Chargers Online. Always.",
+    description: "Nepal's premier remote operations center for EV charging infrastructure. 24/7 monitoring, fault alerts, and remote troubleshooting.",
+    url: "https://himalevops.vercel.app",
+    siteName: "HimalEVOps",
+    images: [
+      {
+        url: "/hero-bg.jpg", // We use your hero image as the preview!
+        width: 1200,
+        height: 630,
+        alt: "HimalEVOps - Nepal EV Monitoring",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HimalEVOps | EV Charging Monitoring Nepal",
+    description: "24/7 remote monitoring and fault response for Nepal's EV charging networks.",
+    images: ["/hero-bg.jpg"],
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -22,6 +51,34 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-[#050814] text-white flex flex-col min-h-screen`}>
         
+                {/* Structured Data for Google Search */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "HimalEVOps",
+              "description": "24/7 remote monitoring and fault response for EV charging stations in Nepal.",
+              "url": "https://himalevops.vercel.app",
+              "logo": "https://himalevops.vercel.app/logo.png",
+              "image": "https://himalevops.vercel.app/hero-bg.jpg",
+              "telephone": "+9779825362019",
+              "email": "hello@himelevops.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Kathmandu",
+                "postalCode": "44600", // <--- Fixed this
+                "addressCountry": "NP"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/himelevops"
+              ]
+            })
+          }}
+        />
+
+
         <Navbar />
         
         <main className="flex-grow pt-10">

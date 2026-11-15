@@ -54,7 +54,7 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full bg-[#DC143C]/10 flex items-center justify-center text-[#DC143C]">✉</div>
               <div>
                 <p className="text-gray-500 text-sm">Email Us</p>
-                <p className="text-white font-bold">hello@himelevops.com</p>
+                <p className="text-white font-bold">himalevops@outlook.com</p>
               </div>
             </div>
             
@@ -62,7 +62,7 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full bg-[#003893]/20 flex items-center justify-center text-[#00F0FF]">✆</div>
               <div>
                 <p className="text-gray-500 text-sm">Call Us (Nepal)</p>
-                <p className="text-white font-bold">+977 980-0000000</p>
+                <p className="text-white font-bold">+9779825362019</p>
               </div>
             </div>
           </div>

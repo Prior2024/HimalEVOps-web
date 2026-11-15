@@ -3,15 +3,17 @@ import Link from "next/link";
 import { blogPosts } from "../../../lib/posts";
 import { notFound } from "next/navigation";
 
-// We must make the function async for Next.js 15+
+// 1. TELL NEXT.JS WHICH POSTS EXIST BEFORE BUILDING
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    id: post.id,
+  }));
+}
+
 export default async function BlogPost({ params }: { params: Promise<{ id: string }> }) {
-  // Await the params to get the actual ID
   const resolvedParams = await params;
-  
-  // Find the post based on the URL id
   const post = blogPosts.find((p) => p.id === resolvedParams.id);
 
-  // If the post doesn't exist, show a 404 page
   if (!post) {
     notFound(); 
   }
@@ -27,17 +29,10 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
       </h1>
       <p className="text-gray-500 font-mono mb-8">{post.date}</p>
 
-      {/* Image Box */}
       <div className="relative h-[400px] w-full rounded-3xl overflow-hidden mb-12 border border-white/10">
-        <Image 
-          src={post.image} 
-          alt={post.title} 
-          fill 
-          className="object-cover" 
-        />
+        <Image src={post.image} alt={post.title} fill className="object-cover" />
       </div>
 
-      {/* Article Content */}
       <div className="prose prose-invert prose-lg max-w-none text-gray-300 space-y-6">
         {post.content.map((paragraph, index) => (
           <p key={index} className="leading-relaxed">{paragraph}</p>
